@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package library.management.system;
 
 import java.awt.*;
@@ -132,6 +128,7 @@ public class Signup extends JFrame implements ActionListener{
 		int i = st.executeUpdate();
 		if (i > 0){
                     JOptionPane.showMessageDialog(null, "successfully Created");
+                    
                 }
 
                 textField.setText("");

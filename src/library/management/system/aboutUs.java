@@ -1,6 +1,8 @@
 package library.management.system;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -56,7 +58,24 @@ public class aboutUs extends JFrame{
             l9.setFont(new Font("Trebuchet MS", Font.BOLD , 20));
             l9.setBounds(70, 320, 600, 34);
             contentPane.add(l9);
-
+            
+            JLabel b = new JLabel("Back");
+            b.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+				Home home = new Home();
+				home.setVisible(true);
+			}
+		});
+	b.setForeground(Color.GRAY);
+	b.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+	ImageIcon i7 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/tenth.png"));
+        Image i8 = i7.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        ImageIcon i9 = new ImageIcon(i8);
+        b.setIcon(i9);
+	b.setBounds(10,20,150,50);
+	contentPane.add(b);
                 
             contentPane.setBackground(Color.WHITE);
 	}

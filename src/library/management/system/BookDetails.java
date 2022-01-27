@@ -59,7 +59,7 @@ public class BookDetails extends JFrame implements ActionListener{
 	table.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 	scrollPane.setViewportView(table);
 
-	JButton b1 = new JButton("Search");
+	b1 = new JButton("Search");
 	b1.addActionListener(this);
 	b1.setBorder(new LineBorder(new Color(255, 20, 147), 2, true));
 	ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/eight.png"));
@@ -71,7 +71,7 @@ public class BookDetails extends JFrame implements ActionListener{
 	b1.setBounds(564, 89, 138, 33);
 	contentPane.add(b1);
 
-	JButton b2 = new JButton("Delete");
+	b2 = new JButton("Delete");
 	b2.addActionListener(this);
 	ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("library/management/system/icons/nineth.png"));
         Image i5 = i4.getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT);
@@ -97,8 +97,8 @@ public class BookDetails extends JFrame implements ActionListener{
 	search.setForeground(new Color(47, 79, 79));
 	search.setFont(new Font("Trebuchet MS", Font.BOLD | Font.ITALIC, 17));
 	search.setBounds(189, 89, 357, 33);
-	contentPane.add(search);
 	search.setColumns(10);
+	contentPane.add(search);
 
 	JLabel l3 = new JLabel("Back");
 	l3.addMouseListener(new MouseAdapter() {
@@ -129,14 +129,11 @@ public class BookDetails extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         try{
-            
             conn con = new conn();
-            if(ae.getSource() == b1){
-             System.out.println(search.getText());
+            if(ae.getSource() == b1){             
                 String sql = "select * from book where concat(name, book_id) like ?";
 		PreparedStatement st = con.c.prepareStatement(sql);
-                String str = "%" + search.getText() + "%";
-		st.setString(1, str);
+		st.setString(1, "%" + search.getText() + "%");
 		ResultSet rs = st.executeQuery();
 
 		table.setModel(DbUtils.resultSetToTableModel(rs));
@@ -145,7 +142,7 @@ public class BookDetails extends JFrame implements ActionListener{
 
             }
             if(ae.getSource() == b2){
-                String sql = "delete from book where name = '" + search.getText() + "'";
+                String sql = "delete from book where book_id = '" + search.getText() + "'";
 		PreparedStatement st = con.c.prepareStatement(sql);
 
 		JDialog.setDefaultLookAndFeelDecorated(true);

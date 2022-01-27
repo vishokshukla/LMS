@@ -177,6 +177,8 @@ public class AddBook extends JFrame implements ActionListener{
                 t5.setText("");
                 t6.setText("");
 		st.close();
+                this.setVisible(false);
+		new Home().setVisible(true);
             }
             if(ae.getSource() == b2){
                 this.setVisible(false);
